@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -27,6 +28,7 @@ import com.madremedusa.R;
 import com.madremedusa.fragments.MagazineFragment;
 import com.madremedusa.fragments.PostFragment;
 import com.madremedusa.utils.AppConstant;
+import com.madremedusa.utils.DrawableManager;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private Context context;
@@ -78,16 +80,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch(item.getItemId()){
+            case R.id.clear_cache:
+                (new DrawableManager(context, ResourcesCompat.getDrawable(context.getResources(), R.mipmap.ic_launcher, null))).clearCache();
+                return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -110,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }catch (ActivityNotFoundException e) {
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(AppConstant.FBPage)));
                 }
+                this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 break;
             case R.id.nav_twitter:
                 try{
@@ -118,10 +116,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }catch (ActivityNotFoundException e) {
                     startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse(AppConstant.TwitterPage)));
                 }
+                this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 break;
             case R.id.nav_us:
                 i = new Intent(context, UsActivity.class);
                 startActivity(i);
+                this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 break;
         }
 

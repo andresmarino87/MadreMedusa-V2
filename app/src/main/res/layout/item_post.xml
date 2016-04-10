@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:text=""
             android:textStyle="bold"
+            android:textColor="@color/white"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -29,6 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
+            android:textColor="@color/white"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
     </LinearLayout>

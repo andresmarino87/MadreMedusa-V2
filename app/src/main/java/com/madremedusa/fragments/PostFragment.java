@@ -45,9 +45,11 @@ public class PostFragment extends Fragment {
     private PostViewAdapter postAdapter;
     private LinearLayoutManager linearLayoutManagerVertical;
     private ArrayList<ItemPost> posts;
-    static private String tokenForMore="-1";
-    static private boolean isLoading=false;
-    int pastVisiblesItems, visibleItemCount, totalItemCount;
+    private String tokenForMore="-1";
+    private boolean isLoading=false;
+    private int pastVisiblesItems, visibleItemCount, totalItemCount;
+    private boolean firstTimeLoading;
+
 
     public PostFragment() {
         // Required empty public constructor
@@ -76,6 +78,14 @@ public class PostFragment extends Fragment {
         postsView.setLayoutManager(linearLayoutManagerVertical);
         postAdapter = new PostViewAdapter(getContext(), posts);
         postsView.setAdapter(postAdapter);
+
+        postAdapter.setOnLoadMoreListener(new PostViewAdapter.OnLoadMoreListener(){
+            @Override
+            public void onLoadMore() {
+                posts.add(null);
+                postAdapter.notifyItemInserted(posts.size() - 1);
+            }
+        });
         postsView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -88,10 +98,15 @@ public class PostFragment extends Fragment {
                     if (!isLoading) {
                         if ((visibleItemCount + pastVisiblesItems) >= totalItemCount) {
                             isLoading = true;
-                            Log.i(getContext().getPackageName(), "Last Item Wow !");
+                            firstTimeLoading = false;
                             new JSONGetPosts().execute(AppConstant.PostURL + "&pageToken=" + tokenForMore);
 
                             //Do pagination.. i.e. fetch new data
+                            postAdapter.setLoaded(true);
+
+                            if (postAdapter.onLoadMoreListener != null) {
+                                postAdapter.onLoadMoreListener.onLoadMore();
+                            }
                         }
                     }
                 }
@@ -110,6 +125,7 @@ public class PostFragment extends Fragment {
             //          }
 
         });
+        firstTimeLoading = true;
         new JSONGetPosts().execute(AppConstant.PostURL);
         return rootView;
     }
@@ -179,6 +195,10 @@ public class PostFragment extends Fragment {
 
         @Override
         protected void onPostExecute(JSONObject result) {
+            if(!firstTimeLoading) {
+                posts.remove(posts.size() - 1);
+                postAdapter.notifyItemRemoved(posts.size());
+            }
             boolean hasConnection=false;
             try{
                 hasConnection = result.getBoolean("isConnectionValid");
@@ -206,11 +226,10 @@ public class PostFragment extends Fragment {
                 }catch(JSONException e){
                     Log.e(getActivity().getPackageName(),"Error doInBackground JSONException "+e);
                 }
-
+                postAdapter.setLoaded(false);
                 isLoading=false;
                 progressLayout.setVisibility(LinearLayout.GONE);
                 postsView.setVisibility(LinearLayout.VISIBLE);
-//                spinnerProg.setVisibility(LinearLayout.GONE);
                 postAdapter.notifyDataSetChanged();
             }else{
                 Toast.makeText(getContext(), R.string.no_internet_connection, Toast.LENGTH_LONG).show();

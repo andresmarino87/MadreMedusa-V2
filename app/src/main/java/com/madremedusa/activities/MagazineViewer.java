@@ -38,4 +38,10 @@ public class MagazineViewer extends AppCompatActivity {
         magazineAdapter = new FullScreenAdapter(context, magazineIssue);
         magazineView.setAdapter(magazineAdapter);
     }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
 }

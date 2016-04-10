@@ -3,9 +3,13 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="black_overlay">#66000000</color>
+    <color name="black_overlay">#000</color>
     <color name="yellow">#FFFF00</color>
     <color name="yolk">#FFE600</color>
     <color name="mustard">#FFCC11</color>
     <color name="darkgoldenrod2">#EEAD0E</color>
+    <color name="white">#FFF</color>
+    <color name="gray44">#707070</color>
+    <color name="gray30">#4D4D4D</color>
+    <color name="gray6">#0F0F0F</color>
 </resources>

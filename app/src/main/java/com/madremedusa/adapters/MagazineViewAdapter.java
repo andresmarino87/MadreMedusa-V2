@@ -1,5 +1,6 @@
 package com.madremedusa.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.res.ResourcesCompat;
@@ -69,6 +70,7 @@ public class MagazineViewAdapter extends RecyclerView.Adapter<MagazineViewAdapte
             i= new Intent(context, MagazineViewer.class);
             i.putExtra("MagazineIssue", m.getImageUrl());
             context.startActivity(i);
+            ((Activity)context).overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         }
     }
 }
