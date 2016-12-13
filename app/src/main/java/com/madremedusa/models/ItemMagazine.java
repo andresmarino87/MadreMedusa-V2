@@ -1,4 +1,4 @@
-package com.madremedusa.items;
+package com.madremedusa.models;
 
 import java.util.ArrayList;
 

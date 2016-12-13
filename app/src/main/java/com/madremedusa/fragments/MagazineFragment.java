@@ -4,10 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -20,7 +17,7 @@ import android.widget.Toast;
 
 import com.madremedusa.R;
 import com.madremedusa.adapters.MagazineViewAdapter;
-import com.madremedusa.items.ItemMagazine;
+import com.madremedusa.models.ItemMagazine;
 import com.madremedusa.utils.AppConstant;
 import com.madremedusa.utils.Utils;
 

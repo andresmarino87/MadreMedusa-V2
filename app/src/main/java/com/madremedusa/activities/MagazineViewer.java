@@ -8,15 +8,13 @@ import android.support.v7.widget.RecyclerView;
 
 import com.madremedusa.R;
 import com.madremedusa.adapters.FullScreenAdapter;
-import com.madremedusa.adapters.MagazineViewAdapter;
-import com.madremedusa.items.ItemMagazine;
 
 import java.util.ArrayList;
 
 public class MagazineViewer extends AppCompatActivity {
     private Bundle extras;
     private Context context;
-    static private ArrayList<String> magazineIssue;
+    private ArrayList<String> magazineIssue;
     private RecyclerView magazineView;
     private FullScreenAdapter magazineAdapter;
     private LinearLayoutManager linearLayoutManagerHorizontal;

@@ -1,4 +1,4 @@
-package com.madremedusa.items;
+package com.madremedusa.models;
 
 /**
  * Created by Andrés Mariño on 4/3/16.

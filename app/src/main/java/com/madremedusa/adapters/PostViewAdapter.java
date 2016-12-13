@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.madremedusa.R;
 import com.madremedusa.activities.PostActivity;
-import com.madremedusa.items.ItemPost;
+import com.madremedusa.models.ItemPost;
 import com.madremedusa.utils.DrawableManager;
 
 import java.util.ArrayList;

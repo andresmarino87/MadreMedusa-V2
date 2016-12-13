@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.madremedusa.R;
 import com.madremedusa.activities.MagazineViewer;
-import com.madremedusa.items.ItemMagazine;
+import com.madremedusa.models.ItemMagazine;
 import com.madremedusa.utils.DrawableManager;
 
 import java.util.ArrayList;

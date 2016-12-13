@@ -16,10 +16,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.madremedusa.R;
-import com.madremedusa.adapters.MagazineViewAdapter;
 import com.madremedusa.adapters.PostViewAdapter;
-import com.madremedusa.items.ItemMagazine;
-import com.madremedusa.items.ItemPost;
+import com.madremedusa.models.ItemPost;
 import com.madremedusa.utils.AppConstant;
 import com.madremedusa.utils.Utils;
 
@@ -27,7 +25,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 /**

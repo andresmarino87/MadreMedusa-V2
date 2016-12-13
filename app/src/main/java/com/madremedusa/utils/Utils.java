@@ -24,16 +24,13 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.widget.Toast;
 
-public class Utils {
-	private Context context;
-	 
+public final class Utils {
+
     // constructor
-    public Utils(Context context) {
-        this.context = context;
-    }
+    private Utils(Context context) {}
  
     // Reading file paths from SDCard
-    public ArrayList<String> getFilePathsCovers(boolean isCover, String magazinePath) {
+    public ArrayList<String> getFilePathsCovers(boolean isCover, String magazinePath, Context context) {
         ArrayList<String> filePaths = new ArrayList<String>();
         File directory;
         if(isCover){

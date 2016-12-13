@@ -2,10 +2,11 @@ package com.madremedusa.utils;
 
 import com.madremedusa.R;
 
-public class AppConstant {
+public final class AppConstant {
+	private AppConstant(){}
+
 	final static public int PERMISSIONS_REUQES_WRITE_EXTERNAL_STORAGE = 1;
 	final public static String EXT = "jpg";
-//	final public static Integer[] MenuImages= { R.drawable.ic_magazine, R.drawable.ic_blog,R.drawable.ic_twitter,R.drawable.ic_facebook,R.drawable.ic_us};
 	final public static String TwitterApp = "twitter://user?screen_name=madremedusa";
 	final public static String FBApp = "fb://profile/140121402739421";
 	final public static String TwitterPage = "https://twitter.com/madremedusa";
