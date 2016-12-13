@@ -27,7 +27,7 @@ import android.widget.Toast;
 public final class Utils {
 
     // constructor
-    private Utils(Context context) {}
+    private Utils() {}
  
     // Reading file paths from SDCard
     public ArrayList<String> getFilePathsCovers(boolean isCover, String magazinePath, Context context) {
